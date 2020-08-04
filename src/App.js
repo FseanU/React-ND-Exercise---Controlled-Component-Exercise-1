@@ -3,6 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state= {
+    input: ''
+  }
+
+  handleChange = (e) => {
+    const input = e.currentTarget.value;
+    this.setState((prevState)=>({
+      input
+    }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -11,9 +22,9 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <div className="container">
-          <input type="text" placeholder="Say Something" />
+          <input type="text" placeholder="Say Something" value={this.state.input} onChange={this.handleChange}/>
           <p className="echo">Echo:</p>
-          <p>This should mirror the text you typed into the input field.</p>
+          <p>{this.state.input}</p>
         </div>
       </div>
     );
